@@ -22,6 +22,7 @@ export class FormComponent implements OnInit {
   @Output()
   private edit = new EventEmitter<Recipe>();
 
+  // Use @Input to get data from the parent
   @Input()
   recipe?: Recipe;
 
@@ -30,6 +31,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Triggered when the inputs of the component change
   ngOnChanges() {
     this.form.patchValue(this.recipe!);
   }
@@ -38,9 +40,11 @@ export class FormComponent implements OnInit {
     if (!this.form.valid) return;
     const payload = this.form.value;
 
+    // "Clean" way : check if the recipe is provided
     // if (this.recipe) this.edit.emit(payload);
     // else this.create.emit(payload);
 
+    // "Quick & dirty" way : since add listens to create, and edit to edit, simply emit everything at once.
     this.create.emit(payload);
     this.edit.emit(payload);
   }

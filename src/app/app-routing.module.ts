@@ -9,6 +9,9 @@ import { ListComponent } from './recipes/list/list.component';
 const routes: Routes = [
   { path: 'list', component: ListComponent },
   { path: 'add', component: AddComponent },
+  // Declare id to be a parameter of the route
+  // Add a guard to the route itself
+  // To protect children route, use canActivateChild
   { path: 'edit/:id', component: EditComponent, canActivate: [IsNumberGuard] },
   { path: 'error', component: ErrorComponent },
   // Redirections always last

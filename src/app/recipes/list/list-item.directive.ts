@@ -4,6 +4,8 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
   selector: '[appListItem]',
 })
 export class ListItemDirective {
+  // HostBinding : bind to a property on the parent HTML element
+  // Give a value to the variable decorated, which will serve as the value for the binding
   @HostBinding('style.cursor')
   private cursor = 'pointer';
 
@@ -15,6 +17,7 @@ export class ListItemDirective {
 
   constructor() {}
 
+  // Host listener : listen to events on the parent HTML element
   @HostListener('mouseenter')
   onMouseEnter() {
     this.transform = 'scale(1.1)';

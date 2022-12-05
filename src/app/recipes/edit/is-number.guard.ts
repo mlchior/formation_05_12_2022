@@ -13,8 +13,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class IsNumberGuard implements CanActivate {
+  // Used to control access to a route. Must be provided in the routing module.
+
   constructor(private snacker: MatSnackBar, private router: Router) {}
 
+  // When returning false, prevents access to the route.
+  // Be sure to route to a specific route otherwise a blank page will get displayed
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
