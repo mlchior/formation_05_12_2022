@@ -22,7 +22,7 @@ export class RecipesService {
     return this.http.post<Recipe>(this._url, recipe);
   }
 
-  updateRecipe(recipe: Recipe) {
-    return this.http.put<Recipe>(this._url, recipe);
+  updateRecipe(id: string, recipe: Recipe) {
+    return this.http.put<Recipe>(this._url + '/' + id, recipe);
   }
 }

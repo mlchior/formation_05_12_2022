@@ -12,7 +12,7 @@ export class FormComponent implements OnInit {
   // You can give a value directly (title: ''), or set it up with validators ([VALUE, [ARRAY_OF_VALIDATORS]])
   form = this.fb.group({
     title: ['', [Validators.required]],
-    time: [null, [Validators.required, Validators.min(0)]],
+    time: [null, [Validators.min(0)]],
   });
 
   // Use @Output to emit an event back to the parent
@@ -37,6 +37,10 @@ export class FormComponent implements OnInit {
   submit() {
     if (!this.form.valid) return;
     const payload = this.form.value;
+
+    // if (this.recipe) this.edit.emit(payload);
+    // else this.create.emit(payload);
+
     this.create.emit(payload);
     this.edit.emit(payload);
   }

@@ -25,7 +25,9 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {}
 
   editRecipe(recipe: Recipe) {
-    this.service.updateRecipe(recipe).subscribe(({ title }) => {
+    const { id } = this.route.snapshot.params;
+
+    this.service.updateRecipe(id, recipe).subscribe(({ title }) => {
       this.snacker.open(`Recipe ${title} updated !`, 'OK', { duration: 5000 });
       this.router.navigateByUrl('/');
     });

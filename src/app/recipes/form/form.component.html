@@ -6,12 +6,18 @@
     <mat-label>Recipe name</mat-label>
     <!-- Use formControlName to send a string which will be the key of the form control (set in the TS) -->
     <input type="text" matInput formControlName="title" required />
+    <mat-error *ngIf="form.get('title')!.hasError('required')">
+      Field is required
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Time required</mat-label>
-    <input type="number" matInput formControlName="time" required />
+    <input type="number" matInput formControlName="time" />
     <mat-hint>In seconds</mat-hint>
+    <mat-error *ngIf="form.get('time')!.hasError('min')">
+      Value must be greater than 0
+    </mat-error>
   </mat-form-field>
 
   <!-- Use a button of type submit to listen to "Enter" key on inputs, and trigger the form submission -->

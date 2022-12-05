@@ -6,7 +6,7 @@
   <mat-card-content>
     <app-form
       [recipe]="(recipe$ | async)!"
-      (create)="editRecipe($event)"
+      (edit)="editRecipe($event)"
     ></app-form>
   </mat-card-content>
 </mat-card>
