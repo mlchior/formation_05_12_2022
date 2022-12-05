@@ -29,6 +29,6 @@
     type="submit"
     [disabled]="!form.valid"
   >
-    Create recipe
+    {{ recipe ? "Update" : "Create" }} recipe
   </button>
 </form>

@@ -2,12 +2,12 @@
   "recipes": [
     {
       "title": "Hamburger",
-      "time": 0,
+      "time": 3665,
       "id": 1
     },
     {
-      "title": "Sandwich maison",
-      "time": 10,
+      "title": "Sandwich",
+      "time": null,
       "id": 2
     }
   ]

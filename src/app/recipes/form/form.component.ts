@@ -47,5 +47,8 @@ export class FormComponent implements OnInit {
     // "Quick & dirty" way : since add listens to create, and edit to edit, simply emit everything at once.
     this.create.emit(payload);
     this.edit.emit(payload);
+
+    this.form.reset();
+    this.form.markAsPristine();
   }
 }

@@ -1,14 +1,32 @@
-<!-- Use ng-container to add logic to an HTML element that will not end in the final DOM of the app -->
-<!-- Use *ngFor to iterate over an array of items -->
-<!-- Use async pipe to get the value inside an observable (here, an array of recipes) -->
-<ng-container *ngFor="let recipe of recipes$ | async">
-  <mat-card [routerLink]="['/', 'edit', recipe.id]" appListItem>
-    <mat-card-header>
-      <!-- Use {{ var }} syntax to display variable contents -->
-      <mat-card-title>{{ recipe.title }}</mat-card-title>
-      <mat-card-subtitle *ngIf="recipe.time">
-        Time required : {{ recipe.time | time }}
-      </mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
-</ng-container>
+<mat-accordion>
+  <!-- Use ng-container to add logic to an HTML element that will not end in the final DOM of the app -->
+  <!-- Use *ngFor to iterate over an array of items -->
+  <!-- Use async pipe to get the value inside an observable (here, an array of recipes) -->
+  <ng-container *ngFor="let recipe of recipes$ | async">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ recipe.title | titlecase }}</mat-panel-title>
+        <mat-panel-description *ngIf="recipe.time">
+          Time required : {{ recipe.time | time }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-action-row>
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/', 'edit', recipe.id]"
+        >
+          Edit recipe
+        </button>
+        <span class="flexer"></span>
+        <button
+          mat-button
+          color="warn"
+          (click)="$event.stopPropagation(); deleteRecipe(recipe)"
+        >
+          Delete recipe
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </ng-container>
+</mat-accordion>
