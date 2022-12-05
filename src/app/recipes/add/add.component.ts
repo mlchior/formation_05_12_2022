@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RecipesService } from '../../providers/http/recipes.service';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-add',
@@ -9,6 +10,11 @@ import { RecipesService } from '../../providers/http/recipes.service';
   styleUrls: ['./add.component.scss'],
 })
 export class AddComponent implements OnInit {
+
+  // Get a child component with its class
+  // Use static true to use it in onInit instead of afterViewInit
+  @ViewChild(FormComponent, { static: true }) formComponent!: FormComponent;
+
   constructor(
     private service: RecipesService,
     private snacker: MatSnackBar,

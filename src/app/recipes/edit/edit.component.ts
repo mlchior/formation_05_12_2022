@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { shareReplay, switchMap } from 'rxjs/operators';
 import { RecipesService } from '../../providers/http/recipes.service';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-edit',
@@ -14,6 +15,9 @@ export class EditComponent implements OnInit {
     switchMap(({ id }) => this.service.getRecipe(id)),
     shareReplay(1)
   );
+
+  // Get a view child with a name instead of the class instance
+  @ViewChild('formCmp', { static: true }) formComponent!: FormComponent;
 
   constructor(
     private service: RecipesService,

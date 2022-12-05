@@ -4,7 +4,9 @@
   </mat-card-header>
 
   <mat-card-content>
+    <!-- Name an HTML ViewChild element with #VARNAME -->
     <app-form
+      #formCmp
       [recipe]="(recipe$ | async)!"
       (edit)="editRecipe($event)"
     ></app-form>

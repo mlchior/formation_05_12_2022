@@ -4,15 +4,21 @@ import { ErrorComponent } from './common/error/error.component';
 import { AddComponent } from './recipes/add/add.component';
 import { EditComponent } from './recipes/edit/edit.component';
 import { IsNumberGuard } from './recipes/edit/is-number.guard';
+import { IsEditingGuard } from './recipes/form/is-editing.guard';
 import { ListComponent } from './recipes/list/list.component';
 
 const routes: Routes = [
   { path: 'list', component: ListComponent },
-  { path: 'add', component: AddComponent },
+  { path: 'add', component: AddComponent, canDeactivate: [IsEditingGuard] },
   // Declare id to be a parameter of the route
   // Add a guard to the route itself
   // To protect children route, use canActivateChild
-  { path: 'edit/:id', component: EditComponent, canActivate: [IsNumberGuard] },
+  {
+    path: 'edit/:id',
+    component: EditComponent,
+    canActivate: [IsNumberGuard],
+    canDeactivate: [IsEditingGuard],
+  },
   { path: 'error', component: ErrorComponent },
   // Redirections always last
   // First redirection : the root url ("/") redirects to another link
