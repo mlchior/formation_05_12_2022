@@ -16,4 +16,8 @@ export class RecipesService {
   createRecipe(recipe: Recipe) {
     return this.http.post<Recipe>(this._url, recipe);
   }
+
+  updateRecipe(recipe: Recipe) {
+    return this.http.put<Recipe>(this._url, recipe);
+  }
 }

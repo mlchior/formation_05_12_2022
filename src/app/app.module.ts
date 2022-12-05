@@ -19,6 +19,7 @@ import { FormComponent } from './recipes/form/form.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EditComponent } from './recipes/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ErrorComponent,
     AddComponent,
     FormComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,

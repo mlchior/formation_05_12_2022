@@ -1,1 +1,8 @@
-<p>list works!</p>
+<ng-container *ngFor="let recipe of recipes$ | async">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ recipe.title }}</mat-card-title>
+      <mat-card-subtitle>Time required : {{ recipe.time }}s</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</ng-container>

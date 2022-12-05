@@ -14,6 +14,8 @@ export class FormComponent implements OnInit {
 
   @Output()
   private create = new EventEmitter<Recipe>();
+  @Output()
+  private edit = new EventEmitter<Recipe>();
 
   constructor(private fb: FormBuilder) {}
 
@@ -23,5 +25,6 @@ export class FormComponent implements OnInit {
     if (!this.form.valid) return;
     const payload = this.form.value;
     this.create.emit(payload);
+    this.edit.emit(payload);
   }
 }
