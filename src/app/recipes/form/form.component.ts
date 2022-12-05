@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -22,10 +22,17 @@ export class FormComponent implements OnInit {
   @Output()
   private edit = new EventEmitter<Recipe>();
 
+  @Input()
+  recipe?: Recipe;
+
   // Inject the form builder to ease the form construction
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
+
+  ngOnChanges() {
+    this.form.patchValue(this.recipe!);
+  }
 
   submit() {
     if (!this.form.valid) return;

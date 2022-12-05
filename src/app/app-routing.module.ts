@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './common/error/error.component';
 import { AddComponent } from './recipes/add/add.component';
+import { EditComponent } from './recipes/edit/edit.component';
 import { ListComponent } from './recipes/list/list.component';
 
 const routes: Routes = [
   { path: 'list', component: ListComponent },
   { path: 'add', component: AddComponent },
+  { path: 'edit', children: [{ path: ':id', component: EditComponent }] },
   { path: 'error', component: ErrorComponent },
   // Redirections always last
   // First redirection : the root url ("/") redirects to another link

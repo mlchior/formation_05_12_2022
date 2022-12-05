@@ -14,6 +14,10 @@ export class RecipesService {
     return this.http.get<Recipes>(this._url);
   }
 
+  getRecipe(id: string) {
+    return this.http.get<Recipe>(this._url + '/' + id);
+  }
+
   createRecipe(recipe: Recipe) {
     return this.http.post<Recipe>(this._url, recipe);
   }

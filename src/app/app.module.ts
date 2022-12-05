@@ -20,6 +20,7 @@ import { FormComponent } from './recipes/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EditComponent } from './recipes/edit/edit.component';
+import { TimePipe } from './common/pipes/time.pipe';
 
 @NgModule({
   // UI Elements : components, directives, pipes ...
@@ -30,6 +31,7 @@ import { EditComponent } from './recipes/edit/edit.component';
     AddComponent,
     FormComponent,
     EditComponent,
+    TimePipe,
   ],
   // Mainly modules
   imports: [

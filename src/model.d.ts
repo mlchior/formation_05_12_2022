@@ -1,4 +1,5 @@
 declare interface Recipe {
+  id: number;
   title: string;
   time: number;
 }
