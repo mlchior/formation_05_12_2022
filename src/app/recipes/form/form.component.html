@@ -1,0 +1,21 @@
+<form novalidate (ngSubmit)="submit()" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Recipe name</mat-label>
+    <input type="text" matInput formControlName="title" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Time required</mat-label>
+    <input type="number" matInput formControlName="time" required />
+    <mat-hint>In seconds</mat-hint>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!form.valid"
+  >
+    Create recipe
+  </button>
+</form>

@@ -5,11 +5,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class RecipesService {
-  private _url = `http://localhost:3000`;
+  private _url = `http://localhost:3000/recipes`;
 
   constructor(private http: HttpClient) {}
 
   getRecipes() {
-    return this.http.get<Recipes>(this._url + '/recipes');
+    return this.http.get<Recipes>(this._url);
+  }
+
+  createRecipe(recipe: Recipe) {
+    return this.http.post<Recipe>(this._url, recipe);
   }
 }

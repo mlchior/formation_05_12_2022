@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
-  <span>My recipes</span>
+  <span routerLink="/">My recipes</span>
+
+  <button mat-icon-button routerLink="/add">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
