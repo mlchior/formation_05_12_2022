@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+// The syntax of this decorator injects the service into the app module, making it a singleton
 @Injectable({
   providedIn: 'root',
 })

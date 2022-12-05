@@ -18,6 +18,7 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {}
 
   createRecipe(recipe: Recipe) {
+    // Desconstruct the return value to only get the title, since we only use this one property
     this.service.createRecipe(recipe).subscribe(({ title }) => {
       this.snacker.open(`Recipe ${title} created !`, 'OK', { duration: 5000 });
       this.router.navigateByUrl('/');

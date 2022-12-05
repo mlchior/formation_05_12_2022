@@ -9,11 +9,15 @@ const routes: Routes = [
   { path: 'add', component: AddComponent },
   { path: 'error', component: ErrorComponent },
   // Redirections always last
+  // First redirection : the root url ("/") redirects to another link
   { path: '', redirectTo: 'list', pathMatch: 'full' },
+  // Second redirection : the catcher ("**") redirects unknown urls to this page
   { path: '**', redirectTo: 'error', pathMatch: 'full' },
 ];
 
 @NgModule({
+  // useHash to avoid setting up the HTTP server to redirect the requests to the root url
+  // Used to avoid having to setup a custom server configuration
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })

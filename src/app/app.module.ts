@@ -22,6 +22,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EditComponent } from './recipes/edit/edit.component';
 
 @NgModule({
+  // UI Elements : components, directives, pipes ...
   declarations: [
     AppComponent,
     ListComponent,
@@ -30,6 +31,7 @@ import { EditComponent } from './recipes/edit/edit.component';
     FormComponent,
     EditComponent,
   ],
+  // Mainly modules
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,12 +45,15 @@ import { EditComponent } from './recipes/edit/edit.component';
     ReactiveFormsModule,
     MatSnackBarModule,
   ],
+  // Data providers : services, guards, interceptors ...
+  // Also used for provider overriding, which will be explained in every library's documentation
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },
     },
   ],
+  // Run this component as the main component when the applications start
   bootstrap: [AppComponent],
 })
 export class AppModule {}

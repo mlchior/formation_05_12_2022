@@ -1,6 +1,10 @@
+<!-- Use novalidate to prevent the original form action (which redirects to another page) -->
+<!-- Use (ngSubmit) to listen to the submit event of the form -->
+<!-- Use [formGroup] to bind the form variable to the HTML form -->
 <form novalidate (ngSubmit)="submit()" [formGroup]="form">
   <mat-form-field>
     <mat-label>Recipe name</mat-label>
+    <!-- Use formControlName to send a string which will be the key of the form control (set in the TS) -->
     <input type="text" matInput formControlName="title" required />
   </mat-form-field>
 
@@ -10,6 +14,9 @@
     <mat-hint>In seconds</mat-hint>
   </mat-form-field>
 
+  <!-- Use a button of type submit to listen to "Enter" key on inputs, and trigger the form submission -->
+  <!-- Disable the HTML form button according to the form status -->
+  <!-- Avoid using form.invalid, because form can also be pending (3 different states, we only want it to be enabled when form is valid) -->
   <button
     mat-raised-button
     color="primary"

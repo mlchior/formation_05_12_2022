@@ -1,6 +1,10 @@
+<!-- Use ng-container to add logic to an HTML element that will not end in the final DOM of the app -->
+<!-- Use *ngFor to iterate over an array of items -->
+<!-- Use async pipe to get the value inside an observable (here, an array of recipes) -->
 <ng-container *ngFor="let recipe of recipes$ | async">
   <mat-card>
     <mat-card-header>
+      <!-- Use {{ var }} syntax to display variable contents -->
       <mat-card-title>{{ recipe.title }}</mat-card-title>
       <mat-card-subtitle>Time required : {{ recipe.time }}s</mat-card-subtitle>
     </mat-card-header>

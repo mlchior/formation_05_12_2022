@@ -8,6 +8,7 @@ import { RecipesService } from '../../providers/http/recipes.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
+  // Create an observable from an HTTP call, and use shareReplay to use the last value it received, which will avoid making the HTTP call everytime the observable is observed
   recipes$ = this.service.getRecipes().pipe(shareReplay(1));
 
   constructor(private service: RecipesService) {}
