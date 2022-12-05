@@ -19,6 +19,7 @@ const routes: Routes = [
     canActivate: [IsNumberGuard],
     canDeactivate: [IsEditingGuard],
   },
+  { path: 'ingredients', loadChildren: () => import('./ingredients/ingredients.module').then(m => m.IngredientsModule) },
   { path: 'error', component: ErrorComponent },
   // Redirections always last
   // First redirection : the root url ("/") redirects to another link
