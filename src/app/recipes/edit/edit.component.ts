@@ -11,6 +11,12 @@ import { FormComponent } from '../form/form.component';
   styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent implements OnInit {
+  // switchMap is an operator used to REPLACE an observable with another.
+  // Here, the first one is the params of the URL. In it, we get the ID.
+  // We then use the ID to get the corresponding recipe, which is taken from an observable (http call)
+  // Finally, we use shareReplay to memoize the last value
+  // shareReplay will allow subscribers to start from the shareReplay, instead of the start (this.route.params ...)
+  // By doing that, if we have 2 subscribe on this observable, shareReplay will prevent the HTTP call from being made twice (since the http call is ABOVE the shareReplay)
   recipe$ = this.route.params.pipe(
     switchMap(({ id }) => this.service.getRecipe(id)),
     shareReplay(1)
