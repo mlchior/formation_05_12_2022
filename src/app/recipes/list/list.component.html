@@ -10,6 +10,13 @@
           Time required : {{ recipe.time | time }}
         </mat-panel-description>
       </mat-expansion-panel-header>
+
+      <mat-list *ngIf="recipe.ingredients as list">
+        <mat-list-item *ngFor="let item of list">
+          <b>{{ item.name }} :</b><em>{{ item.qty }}{{ item.unit }}</em>
+        </mat-list-item>
+      </mat-list>
+
       <mat-action-row>
         <button
           mat-raised-button
@@ -19,11 +26,7 @@
           Edit recipe
         </button>
         <span class="flexer"></span>
-        <button
-          mat-button
-          color="warn"
-          (click)="$event.stopPropagation(); deleteRecipe(recipe)"
-        >
+        <button mat-button color="warn" (click)="deleteRecipe(recipe)">
           Delete recipe
         </button>
       </mat-action-row>

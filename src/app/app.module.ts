@@ -17,8 +17,10 @@ import { MatInputModule } from '@angular/material/input';
 import { AddComponent } from './recipes/add/add.component';
 import { FormComponent } from './recipes/form/form.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TimePipe } from './common/pipes/time.pipe';
 import { EditComponent } from './recipes/edit/edit.component';
@@ -50,6 +52,9 @@ import { ListItemDirective } from './recipes/list/list-item.directive';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatExpansionModule,
+    MatSelectModule,
+    MatListModule,
+    FormsModule,
   ],
   // Data providers : services, guards, interceptors ...
   // Also used for provider overriding, which will be explained in every library's documentation

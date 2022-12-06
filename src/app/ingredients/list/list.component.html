@@ -1,0 +1,17 @@
+<mat-list role="list">
+  <mat-list-item
+    *ngFor="let ingredient of ingredients$ | async"
+    role="listitem"
+  >
+    <div class="container">
+      <span>{{ ingredient.name | titlecase }}</span>
+      <button
+        (click)="deleteIngredient(ingredient)"
+        mat-icon-button
+        color="warn"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+</mat-list>

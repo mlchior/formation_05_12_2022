@@ -9,11 +9,16 @@ import { BehaviorSubject } from 'rxjs';
 export class RecipesService {
   private _url = `http://localhost:3000/recipes`;
 
+  // We create a behaviorSubject, which is an observable we can control (send data into it)
+  // We declare it as private, because only the service itself should be able to manipulate it
+  // Then, we expose it as an observable, so that other classes can use the observable part of it
   private _recipes = new BehaviorSubject<Recipes>([]);
   public recipes$ = this._recipes.asObservable();
 
   constructor(private http: HttpClient) {}
 
+  // We call this function to load the recipes into the behavior subject.
+  // .next is used to send data into the observable, making the observers (those who call .subscribe on it) react
   loadRecipes() {
     this.getRecipes().subscribe((recipes) => this._recipes.next(recipes));
   }

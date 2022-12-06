@@ -20,6 +20,58 @@
     </mat-error>
   </mat-form-field>
 
+  <!-- 
+    Form array controls : 
+
+    We can use the form array, which is an array of form groups, to create dynamic forms. 
+
+    For that, we have to iterate over the controls of the forms.
+
+    We also use the index of the loop (let i = index) to be able to remove an element at a given place in the controls
+
+    We finally have to add another [formGroup], otherwise it will bind to the first one found, which is our form.
+    Here, we want to bind to the form group in the form array, not the parent form group !
+
+   -->
+  <div class="container">
+    <ng-container
+      *ngFor="let control of ingredientsControls; let i = index"
+      [formGroup]="control"
+    >
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <mat-select formControlName="name">
+          <mat-option
+            [value]="ing.name"
+            *ngFor="let ing of ingredients$ | async"
+          >
+            {{ ing.name | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input type="number" matInput formControlName="qty" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Measurement unit</mat-label>
+        <mat-select formControlName="unit">
+          <mat-option value="''">Units</mat-option>
+          <mat-option value="mL">Milliliters</mat-option>
+          <mat-option value="mg">Milligrams</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button color="warn" (click)="removeIngredient(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </ng-container>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="addIngredientForm()">
+    Add ingredient
+  </button>
+
   <!-- Use a button of type submit to listen to "Enter" key on inputs, and trigger the form submission -->
   <!-- Disable the HTML form button according to the form status -->
   <!-- Avoid using form.invalid, because form can also be pending (3 different states, we only want it to be enabled when form is valid) -->

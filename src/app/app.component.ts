@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
   // List of style urls to use for this component
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+}

@@ -1,0 +1,20 @@
+<mat-form-field>
+  <mat-label>Ingredient name</mat-label>
+  <!-- We use the event (keyup) and add ".enter" to react to the user pressing the enter key -->
+  <input
+    type="text"
+    matInput
+    [formControl]="control"
+    (keyup.enter)="submitButton.nativeElement.click()"
+  />
+  <!-- We name our button with a # to be able to create a variable for it in the TS -->
+  <button
+    #submitBtn
+    matSuffix
+    mat-icon-button
+    [disabled]="!control.valid"
+    (click)="submit()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-form-field>

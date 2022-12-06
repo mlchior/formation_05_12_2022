@@ -1,4 +1,22 @@
 {
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "eggs"
+    },
+    {
+      "id": 2,
+      "name": "milk"
+    },
+    {
+      "name": "Flour",
+      "id": 3
+    },
+    {
+      "name": "Yeast",
+      "id": 4
+    }
+  ],
   "recipes": [
     {
       "title": "Hamburger",
@@ -9,6 +27,33 @@
       "title": "Sandwich",
       "time": null,
       "id": 2
+    },
+    {
+      "title": "Bread",
+      "time": 3600,
+      "ingredients": [
+        {
+          "name": "eggs",
+          "qty": 2,
+          "unit": ""
+        },
+        {
+          "name": "milk",
+          "qty": 200,
+          "unit": "mL"
+        },
+        {
+          "name": "Flour",
+          "qty": 400,
+          "unit": "mg"
+        },
+        {
+          "name": "Yeast",
+          "qty": 30,
+          "unit": "mg"
+        }
+      ],
+      "id": 3
     }
   ]
 }
