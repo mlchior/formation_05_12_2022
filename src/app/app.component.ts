@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RecipesService } from './providers/http/recipes.service';
 
 @Component({
   // CSS selector that will be used to display the component
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  constructor(private service: RecipesService) {}
 }

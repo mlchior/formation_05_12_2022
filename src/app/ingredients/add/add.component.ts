@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { IngredientsService } from '../../providers/http/ingredients.service';
 
@@ -7,7 +7,7 @@ import { IngredientsService } from '../../providers/http/ingredients.service';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
 })
-export class AddComponent implements OnInit {
+export class AddComponent {
   // Since we only have a single input (name), we only need a control, not a group
   control = new FormControl('', [Validators.required]);
 
@@ -19,8 +19,6 @@ export class AddComponent implements OnInit {
   submitButton!: ElementRef<HTMLButtonElement>;
 
   constructor(private service: IngredientsService) {}
-
-  ngOnInit(): void {}
 
   submit() {
     if (!this.control.valid) return;

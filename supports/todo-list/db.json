@@ -1,0 +1,20 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "titre": "Ma première note",
+      "texte": "Mon premier contenu",
+      "dateCreation": "2022-12-06T14:57:33.393Z",
+      "dateEcheance": "2022-12-13T14:57:33.393Z",
+      "fait": false
+    },
+    {
+      "titre": "Ma seconde note",
+      "texte": "Un peu de contenu",
+      "dateEcheance": "2022-12-14T23:00:00.000Z",
+      "dateCreation": "2022-12-06T16:06:52.121Z",
+      "fait": false,
+      "id": 2
+    }
+  ]
+}

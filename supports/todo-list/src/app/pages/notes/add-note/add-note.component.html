@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Créer une note</h1>
+
+<mat-dialog-content>
+  <form novalidate (submit)="submit()" [formGroup]="form" class="add-form">
+    <button
+      #submitBtn
+      [style.display]="'none'"
+      type="submit"
+      [disabled]="!form.valid"
+    ></button>
+
+    <mat-form-field>
+      <mat-label>Titre</mat-label>
+      <input type="text" matInput formControlName="titre" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Texte</mat-label>
+      <textarea
+        formControlName="texte"
+        matInput
+        cdkTextareaAutosize
+        [cdkAutosizeMaxRows]="5"
+        [cdkAutosizeMinRows]="3"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date échéance</mat-label>
+      <input
+        matInput
+        formControlName="dateEcheance"
+        [matDatepicker]="picker"
+        [min]="minDate"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    (click)="submitBtn.click()"
+    color="primary"
+    [disabled]="!form.valid"
+  >
+    Créer note
+  </button>
+</mat-dialog-actions>

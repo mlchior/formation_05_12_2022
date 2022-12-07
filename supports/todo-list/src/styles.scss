@@ -1,0 +1,45 @@
+@use "~@angular/material" as mat;
+
+@include mat.core();
+
+$app-primary: mat.define-palette(mat.$orange-palette);
+$app-accent: mat.define-palette(mat.$orange-palette);
+
+$app-warn: mat.define-palette(mat.$red-palette);
+
+$app-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+$app-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  @include mat.all-component-themes($app-dark-theme);
+  &.light {
+    @include mat.all-component-themes($app-light-theme);
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

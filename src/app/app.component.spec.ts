@@ -1,16 +1,23 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { RecipesService } from './providers/http/recipes.service';
+import { recipesServiceMock } from './providers/http/recipes.service.spec';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatToolbarModule,
+        MatIconModule,
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      providers: [RecipesService],
     }).compileComponents();
   });
 
@@ -19,17 +26,18 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
+});
 
-  it(`should have as title 'recettes-cuisine'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('recettes-cuisine');
+describe('AppComponent unit testing', () => {
+  let component: AppComponent;
+  let service: RecipesService;
+
+  beforeEach(() => {
+    service = recipesServiceMock();
+    component = new AppComponent(service);
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('recettes-cuisine app is running!');
+  it('Should be defined', () => {
+    expect(component).toBeDefined();
   });
 });

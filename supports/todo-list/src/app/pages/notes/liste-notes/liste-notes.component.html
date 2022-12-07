@@ -1,0 +1,29 @@
+<mat-accordion>
+  <ng-container *ngFor="let note of notes$ | async; trackBy: tracker">
+    <mat-expansion-panel #panel [style.opacity]="note.fait ? 0.3 : 1">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ note.titre }}</mat-panel-title>
+        <mat-panel-description>
+          A faire avant le {{ note.dateEcheance | date : "dd/MM/yyyy" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="content">
+        <p>
+          {{ note.texte }}
+        </p>
+        <p>Crée le {{ note.dateCreation | date : "dd/MM/yyyy" }}</p>
+      </div>
+
+      <mat-action-row>
+        <div class="actions-container">
+          <mat-slide-toggle
+            [ngModel]="note.fait"
+            (change)="toggleFait(note); panel.close()"
+          >
+            Fait
+          </mat-slide-toggle>
+        </div>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </ng-container>
+</mat-accordion>
